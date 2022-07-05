@@ -16,7 +16,11 @@ export function fetchCountries(evt) {
         return response.json();
       })
       .then(countries => renderCountriesList(countries))
-      .catch(error => Notify.failure('Oops, there is no country with that name'));
+      .catch(error => {
+        countryList.innerHTML = '';
+        countryInfo.innerHTML = '';
+        Notify.failure('Oops, there is no country with that name')
+      });
   }
 }
 
